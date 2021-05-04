@@ -35,3 +35,7 @@ msbuild.wrn
 .vs/MovieTheathetShowSchedule/v16/.suo
 
 *.cache
+
+MovieTheathetShowSchedule/MovieTheaterShowSchedule.csproj
+
+MovieTheaterShowSchedule.sln

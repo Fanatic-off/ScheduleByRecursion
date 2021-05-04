@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MovieTheathetShowSchedule
+namespace MovieTheaterShowSchedule
 {
     public class MovieTheater
     {
@@ -39,31 +39,5 @@ namespace MovieTheathetShowSchedule
                 }
             }
         }
-
-
-        //public MovieTheater()
-        //{
-        //    Next = new List<MovieTheater>();
-        //}
-
-        //public void CreateGraph()
-        //{
-        //    foreach(int hall in Hall)
-        //    {
-        //        //if (TimeMovie < TimeWork) { 
-        //        //}
-        //        List<int> temp = new List<int>();
-        //        foreach(int q in TimeMovie)
-        //        {
-        //            temp.Add(q);
-        //        }
-        //        temp.Add(hall);
-
-        //    }
-        //}
-
-
-
-
     }
 }

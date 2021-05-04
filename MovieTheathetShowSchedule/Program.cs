@@ -1,4 +1,4 @@
-﻿using MovieTheathetShowSchedule;
+﻿using MovieTheaterShowSchedule;
 using System;
 using System.Collections.Generic;
 
