@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MovieTheathetShowSchedule;
+using System;
+using System.Collections.Generic;
 
 namespace MovieTheaterShowSchedule
 {
@@ -6,7 +8,9 @@ namespace MovieTheaterShowSchedule
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            MovieTheater theater = new MovieTheater();
+            theater.CreateMovieGraph(new List<string>() { "Властелин", "Хоббит" }, new List<string>());
+
         }
     }
 }
