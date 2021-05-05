@@ -7,7 +7,7 @@ namespace MovieTheaterShowSchedule
     {
         public int TimeWork = (24 - 10) * 60;
         public int Hall = 2;
-        public int TimeMovie = 90;
+        public int TimeMovie = 190;
         public static List<string> Movie;
         public List<string> CurrentMovie;
         public List<MovieTheater> Next;
@@ -73,7 +73,7 @@ namespace MovieTheaterShowSchedule
         {
             if (Next.Count == 0)
             {
-                foreach(string s in CurrentMovie)
+                foreach (string s in CurrentMovie)
                 {
                     Console.Write(s + " ");
                 }
@@ -81,11 +81,24 @@ namespace MovieTheaterShowSchedule
             }
             else
             {
-                foreach(MovieTheater m in Next)
+                foreach (MovieTheater m in Next)
                 {
                     m.WriteLeavesGraph();
                 }
             }
         }
     }
+
+    public class Schedule
+    {
+        public int TimeWork;
+        public List<string> CurrentMovie;
+
+        public Schedule(int timeWork, List<string> currentMovie)
+        {
+            TimeWork = timeWork;
+            CurrentMovie = currentMovie;
+        }
+    }
+
 }
