@@ -7,12 +7,22 @@ namespace MovieTheaterShowSchedule
     {
         public int TimeWork = (24 - 10) * 60;
         public int Hall = 2;
+        public int TimeMovie = 90;
         public List<string> Movie;
-        public List<MovieTheater> Next;
+        public List<string> CurrentMovie;
 
-        public MovieTheater()
+        public MovieTheater(int timeWork, List<string> current=null)
         {
+            TimeWork = timeWork;
 
+            if (current!= null)
+            {
+                CurrentMovie = current;
+            }
+            else
+            {
+                CurrentMovie = new List<string>();
+            }
         }
 
         public void CreateMovieGraph(List<string> Movie, List<string> current)
