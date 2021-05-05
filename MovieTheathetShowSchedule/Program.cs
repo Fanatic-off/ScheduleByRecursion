@@ -8,9 +8,11 @@ namespace MovieTheaterShowSchedule
     {
         static void Main(string[] args)
         {
+            //MovieTheater theater = new MovieTheater();
+            //theater.CreateMovieGraph(new List<string>() { "Властелин", "Хоббит" }, new List<string>());
+            MovieTheater.Movie = new List<string>() { "MMM"};
             MovieTheater theater = new MovieTheater();
-            theater.CreateMovieGraph(new List<string>() { "Властелин", "Хоббит" }, new List<string>());
-
+            theater.CreateMovieGraph();
         }
     }
 }
