@@ -68,5 +68,24 @@ namespace MovieTheaterShowSchedule
             //    }
             //}
         }
+
+        public void WriteLeavesGraph()
+        {
+            if (Next.Count == 0)
+            {
+                foreach(string s in CurrentMovie)
+                {
+                    Console.Write(s + " ");
+                }
+                Console.WriteLine();
+            }
+            else
+            {
+                foreach(MovieTheater m in Next)
+                {
+                    m.WriteLeavesGraph();
+                }
+            }
+        }
     }
 }
