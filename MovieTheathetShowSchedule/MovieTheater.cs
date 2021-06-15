@@ -5,16 +5,15 @@ namespace MovieTheaterShowSchedule
 {
     public class MovieTheater
     {
+        public static List<int> FilmsTime;
         public int TimeWork = (24 - 10) * 60;
         public int Hall = 2;
-        public int TimeMovie = 190;
-        public static List<string> Movie;
-        public List<string> CurrentMovie;
+        public List<int> CurrentMovie;
         public List<MovieTheater> Next;
 
-        public MovieTheater(int timeWork = (24 - 10) * 60, List<string> current = null)
+        public MovieTheater(int timeWork = (24 - 10) * 60, List<int> current = null)
         {
-            TimeWork = timeWork;
+            this.TimeWork = timeWork;
 
             if (current != null)
             {
@@ -22,7 +21,7 @@ namespace MovieTheaterShowSchedule
             }
             else
             {
-                CurrentMovie = new List<string>();
+                CurrentMovie = new List<int>();
             }
 
             Next = new List<MovieTheater>();
@@ -30,50 +29,28 @@ namespace MovieTheaterShowSchedule
 
         public void CreateMovieGraph()
         {
-            foreach (string movie in Movie)
+            foreach (int films in FilmsTime)
             {
-                if (TimeWork - TimeMovie > 0)
+                if (films <= TimeWork)
                 {
-                    List<string> temp = new List<string>();
-                    foreach (string m in CurrentMovie)
+                    List<int> temp = new List<int>();
+                    foreach (int current in CurrentMovie)
                     {
-                        temp.Add(m);
+                        temp.Add(current);
                     }
-                    temp.Add(movie);
-                    MovieTheater theater = new MovieTheater(TimeWork - TimeMovie, temp);
+                    temp.Add(films);
+                    MovieTheater theater = new MovieTheater(TimeWork - films, temp);
 
                     Next.Add(theater);
                     theater.CreateMovieGraph();
                 }
             }
-            //if (current.Count == Hall)
-            //{
-            //    foreach (string a in current)
-            //    {
-            //        Console.Write(a + " ");
-            //    }
-            //    Console.WriteLine();
-            //}
-            //else
-            //{
-            //    foreach (string a in Movie)
-            //    {
-            //        List<string> temp = new List<string>();
-            //        foreach (string b in current)
-            //        {
-            //            temp.Add(b);
-            //        }
-            //        temp.Add(a);
-            //        CreateMovieGraph(Movie, temp);
-            //    }
-            //}
         }
-
         public void WriteLeavesGraph()
         {
             if (Next.Count == 0)
             {
-                foreach (string s in CurrentMovie)
+                foreach (int s in CurrentMovie)
                 {
                     Console.Write(s + " ");
                 }
@@ -87,18 +64,43 @@ namespace MovieTheaterShowSchedule
                 }
             }
         }
+
+        public Schedule GetResult()
+        {
+            if (Next.Count == 0)
+            {
+                return new Schedule(TimeWork, CurrentMovie);
+            }
+            else
+            {
+                List<Schedule> results = new List<Schedule>();
+                foreach (MovieTheater s in Next)
+                {
+                    results.Add(s.GetResult());
+                }
+
+                Schedule minResult = results[0];
+                foreach (Schedule q in results)
+                {
+                    if (minResult.TimeWork > q.TimeWork)
+                    {
+                        minResult = q;
+                    }
+                }
+                return minResult;
+            }
+        }
     }
 
     public class Schedule
     {
         public int TimeWork;
-        public List<string> CurrentMovie;
+        public List<int> CurrentMovie;
 
-        public Schedule(int timeWork, List<string> currentMovie)
+        public Schedule(int timeWork, List<int> currentMovie)
         {
             TimeWork = timeWork;
             CurrentMovie = currentMovie;
         }
     }
-
 }
